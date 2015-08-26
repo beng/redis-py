@@ -1970,6 +1970,14 @@ class Redis(StrictRedis):
         }
     )
 
+    def geoadd(self, key, longitude, latitude, member):
+        return self.execute_command(
+            'GEOADD',
+            key,
+            longitude,
+            latitude,
+            member)
+
     def pipeline(self, transaction=True, shard_hint=None):
         """
         Return a new pipeline object that can queue multiple commands for
